@@ -54,17 +54,22 @@ def computer_picks_square(b)
   computer = empty_positions(b).sample
   b[computer] = "O"
 end
-
+binding.pry
 def check_winner(b)
   winning_lines = 
     [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
-  winning_lines.each do |line|
-    if b[line[0]] == "X" and b[line[1]] == "X" and b[line[2]] == "X"
-      return 'Player'
-    elsif b[line[0]] == "O" and b[line[1]] == 'O' and b[line[2]] =='O'
-      return 'Computer'
-    else
-      return nil
+  
+  if empty_positions(b).length > 3
+    return nil
+  else
+    winning_lines.each do |line|
+      if b[line[0]] == "X" and b[line[1]] == "X" and b[line[2]] == "X"
+        return 'player'
+      elsif b[line[0]] == "O" and b[line[1]] == "O" and b[line[2]] == "O"
+        return 'Computer'
+      else
+        return nil
+      end
     end
   end
 end
