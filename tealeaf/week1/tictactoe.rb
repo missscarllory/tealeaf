@@ -15,8 +15,6 @@
 #show the winner
 #else
 #it's a tie
-# problem
-# not showing right winning line
 require 'pry'
 
 def initialize_board
@@ -54,7 +52,7 @@ def computer_picks_square(b)
   computer = empty_positions(b).sample
   b[computer] = "O"
 end
-binding.pry
+#binding.pry
 def check_winner(b)
   winning_lines = 
     [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
@@ -67,11 +65,10 @@ def check_winner(b)
         return 'player'
       elsif b[line[0]] == "O" and b[line[1]] == "O" and b[line[2]] == "O"
         return 'Computer'
-      else
-        return nil
       end
     end
   end
+  return nil
 end
 
 board = initialize_board
