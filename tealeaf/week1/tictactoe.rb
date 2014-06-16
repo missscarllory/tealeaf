@@ -15,6 +15,8 @@
 #show the winner
 #else
 #it's a tie
+# problem
+# not showing right winning line
 require 'pry'
 
 def initialize_board
@@ -52,23 +54,19 @@ def computer_picks_square(b)
   computer = empty_positions(b).sample
   b[computer] = "O"
 end
-#binding.pry
+binding.pry
 def check_winner(b)
   winning_lines = 
     [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
   
-  if empty_positions(b).length > 3
-    return nil
-  else
     winning_lines.each do |line|
       if b[line[0]] == "X" and b[line[1]] == "X" and b[line[2]] == "X"
-        return 'player'
+        return 'Player'
       elsif b[line[0]] == "O" and b[line[1]] == "O" and b[line[2]] == "O"
         return 'Computer'
       end
     end
-  end
-  return nil
+    return nil
 end
 
 board = initialize_board
@@ -79,13 +77,14 @@ puts "Game starts! You are X."
 
 begin 
   player_picks_square(board)
+  check_winner(board)
   computer_picks_square(board)
   draw_board(board)
   winner = check_winner(board)
 end until winner || empty_positions(board).empty?
 
 if winner 
-  puts "#{winner} #{name} won."
+  puts "#{winner} won."
 else
   puts "It's a tie."
 end
