@@ -1,0 +1,9 @@
+<% if session[:amount] == 0 %>
+  <h3>Sorry, you have no money now, please start over.</h3>
+  Click this to <a href='/new_player'>start over</a>.
+<% else %>
+  <h3>Thanks for playing.</h3>
+  You can play another round by clicking <a href='/new_player'>start over</a>.
+<% end %>
+
+
