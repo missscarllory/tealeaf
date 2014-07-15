@@ -212,24 +212,26 @@ class Blackjack
   def play_again? 
     puts "\nDo you want to play again? 1)yes 2)no"
     ans = gets.chomp.to_i
-    
-    if [1, 2].include?(ans)
-      if ans == 1
-        puts "\nStarting new game..."
-        sleep 1
-        puts " "
-        player.cards = []
-        dealer.cards = []
-        deck = Deck.new
-        start 
-      else
-        puts "\nGoodbye! #{player.name}"
-        exit
-      end
-    else
+   
+    begin 
+      if [1, 2].include?(ans)
+        if ans == 1
+          puts "\nStarting new game..."
+          sleep 1
+          puts " "
+          player.cards = []
+          dealer.cards = []
+          deck = Deck.new
+          start 
+        else
+          puts "\nGoodbye! #{player.name}"
+          exit
+        end
+      end 
+
       puts "\nEnter 1 or 2, please."
-      play_again?
-    end
+      ans = gets.chomp.to_i
+    end while ans != [1, 2]
   end 
   
   def start
@@ -244,3 +246,4 @@ end
 
 game = Blackjack.new
 game.start
+
