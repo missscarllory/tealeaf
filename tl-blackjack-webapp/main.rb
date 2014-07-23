@@ -216,7 +216,7 @@ get '/game/compare' do
     tie!("#{session[:player_name]} and dealer stayed at #{player_total}.")
   end
 
-  erb :game, layout: falses    
+  erb :game, layout: false  
 end  
 
 get '/game_over' do 

@@ -36,7 +36,7 @@
     <% if @show_dealer_hit %>
       <p>
         <h5>Dealer has <%= calculate_total(session[:dealer_card]) %></h5>
-        <form id= "dealer_hit" action="/game/dealer/hit" method="post">
+        <form id="dealer_hit" action="/game/dealer/hit" method="post">
           <input type="submit" class="btn btn-primary" value="Click to see dealer's cards &rarr;"> 
         </form>
       </p>  
