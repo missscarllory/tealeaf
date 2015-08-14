@@ -1,10 +1,9 @@
 require 'rubygems'
 require 'sinatra'
 
-set :sessions, true
-
-enable :sessions
-set :session_secret, 'anne'
+use Rack::Session::Cookie, :key => 'rack.session',
+                           :path => '/',
+                           :secret => 'anne'
 
 BLACK_MAX = 21
 BLACK_MIN = 17
